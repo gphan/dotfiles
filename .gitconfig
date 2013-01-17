@@ -1,0 +1,16 @@
+[user]
+    name = Giang Phan
+    email = john.phan@gmail.com
+[alias]
+    ci = commit -a
+    co = checkout
+    st = status
+    praise = blame
+[diff]
+    color = auto
+    rename = copy
+[status]
+    color = auto
+
+[core]
+    excludesfile = /Users/gphan/.gitignore_global
