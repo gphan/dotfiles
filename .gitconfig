@@ -1,6 +1,10 @@
-[user]
+[Github]
+    User = johnphan05
+[User]
     name = Giang Phan
-    email = john.phan@gmail.com
+    Email = john.phan@gmail.com
+[push]
+    default = simple
 [alias]
     ci = commit -a
     co = checkout
@@ -11,6 +15,3 @@
     rename = copy
 [status]
     color = auto
-
-[core]
-    excludesfile = /Users/gphan/.gitignore_global
