@@ -1,0 +1,17 @@
+[Github]
+    User = johnphan05
+[User]
+    name = Giang Phan
+    Email = john.phan@gmail.com
+[push]
+    default = simple
+[alias]
+    ci = commit -a
+    co = checkout
+    st = status
+    praise = blame
+[diff]
+    color = auto
+    rename = copy
+[status]
+    color = auto
