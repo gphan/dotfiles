@@ -90,8 +90,8 @@ imap jj <Esc>
 
 
 " Stop jumping over lines
-nnoremap j gj
-nnoremap k gk
+"nnoremap j gj
+"nnoremap k gk
 
 " Window control mapping
 " map <C-h> <C-w>h
