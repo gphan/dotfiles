@@ -1,30 +1,27 @@
-set nocompatible
+﻿set nocompatible
 
 " Start Pathogen
 execute pathogen#infect()
-
-" Map Leader
-"let mapleader=","
 
 " Quickly edit and reload vimrc
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-" Map <C-l> to hide search as well
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+" Space bar paging
+nmap <Space> <PageDown>
 
 " NERDTree settings
-nmap <leader>n :NERDTreeToggle<CR>
+map <silent> <C-n> :NERDTreeToggle<CR>
 
 filetype plugin indent on
 syntax on
 set encoding=utf-8
-set mouse=a
 set clipboard+=unnamed
 
 " Visual
-color molokai
-set guifont=Consolas:h14
+set background=dark
+color solarized
+set guifont=Inconsolata-dz\ for\ Powerline:h14
 set ttyfast
 set lazyredraw
 set scrolloff=2
@@ -36,6 +33,12 @@ set ruler
 set title
 set visualbell
 set noerrorbells
+
+" Powerline
+"let g:Powerline_symbols = 'fancy'
+
+" Airline
+let g:airline_powerline_fonts = 1
 
 " Indentation
 set autoindent
@@ -51,7 +54,7 @@ set laststatus=2
 set number
 set numberwidth=4
 set showmatch
-set matchtime=2
+set matchtime=1
 set showmode
 set showcmd
 set cursorline
@@ -81,17 +84,12 @@ set list
 set listchars=tab:>-,trail:·
 autocmd filetype html,xml set listchars-=tab:>-
 
-if has("autocmd")
-    autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
-endif
-
 " Map jj to escape
 imap jj <Esc>
 
-
 " Stop jumping over lines
-"nnoremap j gj
-"nnoremap k gk
+" nnoremap j gj
+" nnoremap k gk
 
 " Window control mapping
 " map <C-h> <C-w>h
@@ -102,6 +100,7 @@ imap jj <Esc>
 " Add sudo trick
 cmap w!! w !sudo tee % >/dev/null
 
-" Map %% to current path
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-
+" Tab width for Ruby
+autocmd BufNewFile,BufRead *.ruby set shiftwidth=2
+autocmd BufNewFile,BufRead *.ruby set tabstop=2
+autocmd BufNewFile,BufRead *.ruby set softtabstop=2
