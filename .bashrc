@@ -6,7 +6,7 @@ alias lsd="ls -alF | grep /%"
 PATH=$PATH:$HOME/bin:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # Extract script from StackOverflow
-extract() {
+function extract() {
    if [ $# -ne 1 ]; then
        echo "Usage: extract <archive>"
        return 
@@ -31,7 +31,7 @@ extract() {
    fi
 }
 
-up() {
+function up() {
   local d=""
   limit=$1
   for ((i=1 ; i <= limit ; i++))
@@ -47,4 +47,12 @@ up() {
 
 function fawk {
     eval "awk '{print \$${1}}'"
+}
+
+function pullall {
+    find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;
+}
+
+function gcp() {
+    pv "$1" > "$2"
 }
