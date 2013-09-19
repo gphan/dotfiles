@@ -39,6 +39,7 @@ set noerrorbells
 
 " Airline
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " Indentation
 set autoindent
@@ -104,3 +105,9 @@ cmap w!! w !sudo tee % >/dev/null
 autocmd BufNewFile,BufRead *.ruby set shiftwidth=2
 autocmd BufNewFile,BufRead *.ruby set tabstop=2
 autocmd BufNewFile,BufRead *.ruby set softtabstop=2
+
+" Rainbow parenthesis
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
