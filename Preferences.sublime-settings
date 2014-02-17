@@ -1,0 +1,15 @@
+{
+	"bold_folder_labels": true,
+	"caret_style": "phase",
+	"color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
+	"font_face": "Inconsolata-dz",
+	"font_size": 14.0,
+	"highlight_line": true,
+	"http_proxy": "http://connsvr.nike.com:8080",
+	"https_proxy": "https://connsvr.nike.com:8080",
+	"scroll_past_end": true,
+	"scroll_speed": 5.0,
+	"show_minimap": false,
+	"theme": "Soda Light.sublime-theme",
+	"translate_tabs_to_spaces": true
+}
