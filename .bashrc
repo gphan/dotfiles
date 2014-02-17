@@ -65,3 +65,11 @@ function all {
         cd $dir && eval $@ && cd ..
     done
 }
+
+function pullall {
+    find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;
+}
+
+function gcp() {
+    pv "$1" > "$2"
+}
