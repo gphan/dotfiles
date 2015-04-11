@@ -1,27 +1,65 @@
-﻿set nocompatible
+set nocompatible
+filetype off
 
-" Start Pathogen
-execute pathogen#infect()
+" Setup Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+
+" List of plugins
+Plugin 'tpope/vim-fugitive'
+" Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+Plugin 'bling/vim-airline'
+" Plugin 'elzr/vim-json'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdcommenter'
+" Plugin 'tpope/vim-sleuth'
+Plugin 'tpope/vim-surround'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/nerdtree'
+" Plugin 'Lokaltog/vim-easymotion'
+
+" Clojure
+Plugin 'vim-scripts/paredit.vim'
+Plugin 'guns/vim-clojure-static'
+Plugin 'guns/vim-clojure-highlight'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-classpath'
+Plugin 'tpope/vim-leiningen'
+
+" Rust
+" Plugin 'rust-lang/rust.vim'
+
+" Color schemes
+Plugin 'altercation/vim-colors-solarized'
+
+call vundle#end()
+filetype plugin indent on
+
+" Map Leader
+"let mapleader=","
 
 " Quickly edit and reload vimrc
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-" Space bar paging
-nmap <Space> <PageDown>
+" Map <C-l> to hide search as well
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 " NERDTree settings
-map <silent> <C-n> :NERDTreeToggle<CR>
+nmap <leader>n :NERDTreeToggle<CR>
 
-filetype plugin indent on
 syntax on
 set encoding=utf-8
 set clipboard+=unnamed
 
 " Visual
 set background=dark
-color solarized
-set guifont=Inconsolata-dz\ for\ Powerline:h14
+colorscheme solarized
+let g:airline_theme='dark'
+let g:airline_powerline_fonts=1
 set ttyfast
 set lazyredraw
 set scrolloff=2
@@ -34,28 +72,21 @@ set title
 set visualbell
 set noerrorbells
 
-" Powerline
-"let g:Powerline_symbols = 'fancy'
-
-" Airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-
 " Indentation
 set autoindent
 set smartindent
 set copyindent
-set shiftwidth=4
-set tabstop=4
-set expandtab
 set smarttab
+set expandtab
+set shiftwidth=2
+set tabstop=2
 
 " Editor specific
 set laststatus=2
 set number
 set numberwidth=4
 set showmatch
-set matchtime=1
+set matchtime=2
 set showmode
 set showcmd
 set cursorline
@@ -83,14 +114,26 @@ set noswapfile
 " Show whitespace
 set list
 set listchars=tab:>-,trail:·
-autocmd filetype html,xml set listchars-=tab:>-
+
+if has("autocmd")
+    autocmd filetype html,xml set listchars-=tab:>-
+    autocmd filetype html,xml,xsl source ~/.vim/scripts/closetag.vim
+    autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
+    autocmd FileType c set nolist
+endif
+
+if has("gui_running")
+    " set transparency=5
+    set guifont=Inconsolata-dz\ for\ Powerline:h14
+endif
 
 " Map jj to escape
 imap jj <Esc>
 
 " Stop jumping over lines
-" nnoremap j gj
-" nnoremap k gk
+"nnoremap j gj
+"nnoremap k gk
 
 " Window control mapping
 " map <C-h> <C-w>h
@@ -101,13 +144,5 @@ imap jj <Esc>
 " Add sudo trick
 cmap w!! w !sudo tee % >/dev/null
 
-" Tab width for Ruby
-autocmd BufNewFile,BufRead *.ruby set shiftwidth=2
-autocmd BufNewFile,BufRead *.ruby set tabstop=2
-autocmd BufNewFile,BufRead *.ruby set softtabstop=2
-
-" Rainbow parenthesis
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+" Map %% to current path
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
