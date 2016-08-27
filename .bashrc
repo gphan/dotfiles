@@ -73,3 +73,4 @@ function pullall {
 function gcp() {
     pv "$1" > "$2"
 }
+
