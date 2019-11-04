@@ -40,16 +40,13 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/X11/bin:$HOME/bin
-export http_proxy="http://connsvr.nike.com:8080"
-export https_proxy="https://connsvr.nike.com:8080"
-export no_proxy='localhost,127.0.0.0/8,local.home,.nike.com,nikevm'
-export JAVA_HOME=$(/usr/libexec/java_home)
+#export JAVA_HOME=$(/usr/libexec/java_home)
 export EDITOR=$(which vim)
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
@@ -57,3 +54,7 @@ export EDITOR=$(which vim)
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 DEFAULT_USER="gphan"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/gphan/.sdkman"
+[[ -s "/Users/gphan/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/gphan/.sdkman/bin/sdkman-init.sh"
