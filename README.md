@@ -1,4 +1,3 @@
 # Dotfiles
 
-My collection of terminal configuration files that I use to setup a new Mac.
-
+My dotfiles and setup file for new Macs for development
