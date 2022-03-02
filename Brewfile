@@ -11,7 +11,7 @@ cask "firefox"
 cask "rectangle"
 cask "stats"
 cask "iterm2"
-cask "alfred"
+cask "raycast"
 cask "font-iosevka"
 
 mas "1Password", id: 443987910
